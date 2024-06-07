@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results - Vapor-Compression Refrigeration Cycle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Results of Vapor-Compression Refrigeration Cycle Analysis</h1>
+        <p>Exergy destruction in evaporator: {{ I_ev }} kW</p>
+        <p>Exergy destruction in compressor: {{ I_comp }} kW</p>
+        <p>Exergy destruction in condenser: {{ I_cond }} kW</p>
+        <p>Exergy destruction in expansion valve: {{ I_exp }} kW</p>
+        <p>Total exergy destruction: {{ I_total }} kW</p>
+        <p>Exergy efficiency: {{ exergy_efficiency }}</p>
+        <p>Energy efficiency: {{ energy_efficiency }}</p>
+        <p>Coefficient of Performance (COP): {{ COP }}</p>
+    </div>
+</body>
+</html>
