@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-import numpy as np
 
 app = Flask(__name__)
 
@@ -24,6 +23,8 @@ def results():
     s3 = float(request.form['s3'])
     s4 = float(request.form['s4'])
     mass_flow_rate = float(request.form['mass_flow_rate'])
+    mech_efficiency = float(request.form['mech_eff'])
+    elec_efficiency = float(request.form['elec_eff'])
 
     # Exergy destruction in evaporator
     Q_ev = mass_flow_rate * (h1 - h4)  # Heat addition in evaporator
@@ -31,7 +32,7 @@ def results():
 
     # Exergy destruction in compressor
     Wc = mass_flow_rate * (h2 - h1)  # Compressor work
-    Wel = Wc / (0.9 * 0.95)  # Electrical power assuming efficiencies
+    Wel = Wc / (mech_efficiency * elec_efficiency)  # Electrical power assuming efficiencies
     I_comp = mass_flow_rate * ((h1 - h2) - T0 * (s1 - s2)) + Wel
 
     # Exergy destruction in condenser
